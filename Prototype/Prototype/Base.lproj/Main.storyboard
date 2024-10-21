@@ -94,7 +94,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1Nn-53-GNa" firstAttribute="width" secondItem="4Cb-zW-r8A" secondAttribute="width" multiplier="0.151086" id="Soz-Vd-X0Z"/>
+                                                <constraint firstItem="X8r-eu-Xgk" firstAttribute="width" secondItem="4Cb-zW-r8A" secondAttribute="width" multiplier="0.0283286" id="afs-NN-fAw"/>
                                                 <constraint firstItem="qvW-DV-4gq" firstAttribute="width" secondItem="4Cb-zW-r8A" secondAttribute="width" id="eb0-7r-WT4"/>
                                             </constraints>
                                         </stackView>
