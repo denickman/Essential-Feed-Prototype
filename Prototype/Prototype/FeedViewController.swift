@@ -9,8 +9,36 @@ import UIKit
 
 class FeedViewController: UITableViewController {
     
+    // MARK: - Properties
     
-    private let feeds = FeedImageViewModel.prototypeFeed
+    private var feeds = [FeedImageViewModel]()
+    
+    // MARK: - Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        refresh()
+        tableView.setContentOffset(CGPoint.init(x: 0, y: -tableView.contentInset.top), animated: false)
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func refresh() {
+        refreshControl?.beginRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            if self.feeds.isEmpty {
+                self.feeds = FeedImageViewModel.prototypeFeed
+                self.tableView.reloadData()
+            }
+            self.refreshControl?.endRefreshing()
+        })
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension FeedViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feeds.count
@@ -22,5 +50,4 @@ class FeedViewController: UITableViewController {
         cell.configure(with: feed)
         return cell
     }
-
 }
